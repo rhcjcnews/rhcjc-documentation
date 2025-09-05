@@ -1,0 +1,36 @@
+---
+title: Welcome to RHCJC Documentation
+description: RHCJC Documentation. This documentation should be referenced when something goes wrong, a design needs to be replicated, or an issue arises with plugins. It includes details on where and why each plugin is added to the website,app as well as a list of all plugins used on the documentation page.
+template: splash
+hero:
+  tagline: Congrats on finding the documentation page the help to all your needs.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Read Docs
+      link: /guides/overview/
+      icon: right-arrow
+    - text: RHCJC Website
+      link: https://rhcjcnews.com/
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="Update content" icon="pencil">
+		Edit `src/content/docs/index.mdx` to see this page change.
+	</Card>
+	<Card title="Add new content" icon="add-document">
+		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	</Card>
+	<Card title="Configure your site" icon="setting">
+		Edit your `sidebar` and other config in `astro.config.mjs`.
+	</Card>
+	<Card title="Read the docs" icon="open-book">
+		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	</Card>
+</CardGrid>
