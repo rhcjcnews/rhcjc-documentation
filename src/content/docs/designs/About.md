@@ -5,7 +5,7 @@ description: The design for the infoxbox used in the https://rhcjcnews.com/infob
 
 ## Overview
 
-The `.sno-infobox-4741` is a custom-designed accordion-style content box used for informational sections. It is styled for clean presentation, strong visual hierarchy, and mobile responsiveness. 
+The `.sno-infobox-4741` is a custom-designed accordion-style content box used for informational sections. It is styled for clean presentation, strong visual hierarchy, and mobile responsiveness.
 
 This style is used specifically on [this page](https://rhcjcnews.com/infobox/about/) but can be extended to other SNO blocks or reusable components.
 
@@ -13,16 +13,15 @@ This style is used specifically on [this page](https://rhcjcnews.com/infobox/abo
 
 ## Features
 
-- ✅ Accordion-style collapsible segments  
-- ✅ Mobile-optimized design with breakpoints for tablet and phone  
-- ✅ Print-friendly layout  
-- ✅ WCAG-compliant focus outlines  
-- ✅ Highlighted link styles and strong typography  
+- ✅ Accordion-style collapsible segments
+- ✅ Mobile-optimized design with breakpoints for tablet and phone
+- ✅ Print-friendly layout
+- ✅ WCAG-compliant focus outlines
+- ✅ Highlighted link styles and strong typography
 
 ---
 
-
-```infobox-styles.css
+```
 .sno-infobox-4741 {
   max-width: 100% !important;
   margin: 0;
