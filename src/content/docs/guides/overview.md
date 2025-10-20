@@ -42,7 +42,7 @@ Check the [Troubleshooting](./troubleshooting) page to find solutions to common 
 
 Need to rebuild or apply the same design elsewhere?
 
-Visit the [Design Replication](./design) section for:
+Visit the [Design Replication](/designs/overview) section for:
 
 - Layout principles
 - Styling rules
