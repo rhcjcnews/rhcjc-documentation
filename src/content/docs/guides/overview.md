@@ -21,7 +21,7 @@ Understanding the plugins used is critical for site performance and troubleshoot
 - **Why each plugin was added**, including functionality and necessity.
 - **Where each plugin is applied**, including specific pages or components.
 
-You’ll also find a breakdown on the [Plugins](./plugins) page.
+You’ll also find a breakdown on the [Plugins](/reference/reference) page.
 
 ## 🧭 Types of Documentation
 
@@ -36,7 +36,7 @@ This site follows the [Diátaxis framework](https://diataxis.fr/) to ensure clar
 
 Encountering an error or unexpected behavior?
 
-Check the [Troubleshooting](./troubleshooting) page to find solutions to common problems, including plugin conflicts, deployment issues, and design mismatches.
+Check the plugin's specific page to find solutions to common problems, including plugin conflicts, deployment issues, and design mismatches.
 
 ## 🧱 Replicating Design
 
