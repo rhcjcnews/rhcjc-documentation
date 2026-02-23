@@ -5,13 +5,12 @@ description: The design for the anniversary event used for the rhcjcnews.com/ann
 
 ## Overview
 
-The design for the anniversary event used for the rhcjcnews.com/anniversary-events and on the homepage
+This documents the anniversary event design used on `rhcjcnews.com/anniversary-events` and as a feature banner on the homepage.
 
 ---
 
 ## Features
 
-- ✅ Accordion-style collapsible segments
 - ✅ Mobile-optimized design with breakpoints for tablet and phone
 - ✅ Print-friendly layout
 - ✅ WCAG-compliant focus outlines
@@ -19,7 +18,11 @@ The design for the anniversary event used for the rhcjcnews.com/anniversary-even
 
 ---
 
-```
+## Markup
+
+### Full hero banner and events grid (homepage)
+
+```html
 <section class="rhcjc-anniversary-banner">
 <div class="rhcjc-anniversary-pattern-overlay"></div>
 <div class="rhcjc-anniversary-animated-border"></div>
@@ -83,16 +86,24 @@ The design for the anniversary event used for the rhcjcnews.com/anniversary-even
 </section>
 ```
 
-```
+### Compact homepage banner with CTA link
+
+This version is a smaller hero/banner that links directly to the anniversary events page.
+
+```html
 <section class="rhcjc-anniversary-banner">
 <div class="rhcjc-anniversary-pattern-overlay"></div>
 <div class="rhcjc-anniversary-animated-border"></div>
 <div class="rhcjc-anniversary-celebration-decorations"><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-1" width="20" height="20" viewbox="0 0 20 20"><rect x="5" y="5" width="10" height="10" fill="#fad04a" transform="rotate(45 10 10)"/></svg><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-2" width="16" height="16" viewbox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#ff6b6b"/></svg><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-3" width="18" height="18" viewbox="0 0 18 18"><polygon points="9,2 11,7 16,7 12,11 14,16 9,13 4,16 6,11 2,7 7,7" fill="#4ecdc4"/></svg><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-4" width="14" height="14" viewbox="0 0 14 14"><rect x="3" y="3" width="8" height="8" fill="#fad04a" transform="rotate(30 7 7)"/></svg><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-5" width="12" height="12" viewbox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#ff6b6b"/></svg><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-6" width="15" height="15" viewbox="0 0 15 15"><rect x="4" y="4" width="7" height="7" fill="#4ecdc4" transform="rotate(60 7.5 7.5)"/></svg><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-7" width="10" height="10" viewbox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#fad04a"/></svg><svg class="rhcjc-anniversary-confetti rhcjc-anniversary-confetti-8" width="16" height="16" viewbox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9 13,15 8,11 3,15 5,9 1,6 6,6" fill="#ff6b6b"/></svg><svg class="rhcjc-anniversary-star rhcjc-anniversary-star-1" width="24" height="24" viewbox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#fad04a" stroke="#fad04a" stroke-width="0.5"/></svg><svg class="rhcjc-anniversary-star rhcjc-anniversary-star-2" width="20" height="20" viewbox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#4ecdc4" stroke="#4ecdc4" stroke-width="0.5"/></svg><svg class="rhcjc-anniversary-star rhcjc-anniversary-star-3" width="18" height="18" viewbox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#ff6b6b" stroke="#ff6b6b" stroke-width="0.5"/></svg><svg class="rhcjc-anniversary-star rhcjc-anniversary-star-4" width="22" height="22" viewbox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#fad04a" stroke="#fad04a" stroke-width="0.5"/></svg><svg class="rhcjc-anniversary-star rhcjc-anniversary-star-5" width="16" height="16" viewbox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#4ecdc4" stroke="#4ecdc4" stroke-width="0.5"/></svg><svg class="rhcjc-anniversary-ribbon rhcjc-anniversary-ribbon-1" width="40" height="80" viewbox="0 0 40 80"><path d="M20 0 Q25 20 20 40 Q15 60 20 80" stroke="#fad04a" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M15 0 Q20 20 15 40 Q10 60 15 80" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="rhcjc-anniversary-ribbon rhcjc-anniversary-ribbon-2" width="35" height="70" viewbox="0 0 35 70"><path d="M17 0 Q22 17 17 35 Q12 52 17 70" stroke="#4ecdc4" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M12 0 Q17 17 12 35 Q7 52 12 70" stroke="#fad04a" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="rhcjc-anniversary-sparkle rhcjc-anniversary-sparkle-1" width="20" height="20" viewbox="0 0 20 20"><path d="M10 0 L10 20 M0 10 L20 10 M3 3 L17 17 M17 3 L3 17" stroke="#fad04a" stroke-width="2" stroke-linecap="round"/></svg><svg class="rhcjc-anniversary-sparkle rhcjc-anniversary-sparkle-2" width="16" height="16" viewbox="0 0 20 20"><path d="M10 0 L10 20 M0 10 L20 10 M3 3 L17 17 M17 3 L3 17" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/></svg><svg class="rhcjc-anniversary-sparkle rhcjc-anniversary-sparkle-3" width="18" height="18" viewbox="0 0 20 20"><path d="M10 0 L10 20 M0 10 L20 10 M3 3 L17 17 M17 3 L3 17" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round"/></svg><svg class="rhcjc-anniversary-sparkle rhcjc-anniversary-sparkle-4" width="14" height="14" viewbox="0 0 20 20"><path d="M10 0 L10 20 M0 10 L20 10 M3 3 L17 17 M17 3 L3 17" stroke="#fad04a" stroke-width="2" stroke-linecap="round"/></svg><svg class="rhcjc-anniversary-sparkle rhcjc-anniversary-sparkle-5" width="16" height="16" viewbox="0 0 20 20"><path d="M10 0 L10 20 M0 10 L20 10 M3 3 L17 17 M17 3 L3 17" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/></svg><div class="rhcjc-anniversary-celebration-circles"><div class="rhcjc-anniversary-circle-decoration rhcjc-anniversary-circle-1"></div><div class="rhcjc-anniversary-circle-decoration rhcjc-anniversary-circle-2"></div><div class="rhcjc-anniversary-circle-decoration rhcjc-anniversary-circle-3"></div></div></div>
-<div class="rhcjc-anniversary-banner-content"><div class="rhcjc-anniversary-banner-header"><div class="rhcjc-anniversary-header-inner"><div class="rhcjc-anniversary-header-text"><span class="rhcjc-anniversary-badge">Special Event</span><h2 class="rhcjc-anniversary-banner-title">Anniversary Week</h2><p class="rhcjc-anniversary-banner-subtitle">Feb.18–20,2026 • Celebrating community journalism</p></div><div class="rhcjc-anniversary-logo">RHCJC</div></div><div style="display:flex;justify-content:flex-end"><a href="/anniversary-events" style="display:inline-flex;align-items:center;gap:8px;margin-right:30px;margin-bottom:30px;padding:14px 28px;background-color:#fad04a;color:#1a1a1a;font-size:15px;font-weight:600;text-decoration:none;border-radius:6px;box-shadow:0 4px 14px rgba(250,208,74,0.4);transition:all 0.2s ease;">Check out events →</a></div></div></div>
+<div class="rhcjc-anniversary-banner-content"><div class="rhcjc-anniversary-banner-header"><div class="rhcjc-anniversary-header-inner"><div class="rhcjc-anniversary-header-text"><span class="rhcjc-anniversary-badge">Special Event</span><h2 class="rhcjc-anniversary-banner-title">Anniversary Week</h2><p class="rhcjc-anniversary-banner-subtitle">Feb. 18–20, 2026 • Celebrating community journalism</p></div><div class="rhcjc-anniversary-logo">RHCJC</div></div><div style="display:flex;justify-content:flex-end"><a href="/anniversary-events" style="display:inline-flex;align-items:center;gap:8px;margin-right:30px;margin-bottom:30px;padding:14px 28px;background-color:#fad04a;color:#1a1a1a;font-size:15px;font-weight:600;text-decoration:none;border-radius:6px;box-shadow:0 4px 14px rgba(250,208,74,0.4);transition:all 0.2s ease;">Check out events →</a></div></div></div>
 </section>
 ```
 
-```
+## Styles (CSS)
+
+Include this in your main stylesheet or in a `<style>` block on any page using the anniversary banner.
+
+```css
 /* RHCJC Anniversary - Enhanced Banner + Full Popup */
       /* ==================== BANNER TRIGGER ==================== */
       .rhcjc-anniversary-trigger {
@@ -898,7 +909,7 @@ The design for the anniversary event used for the rhcjcnews.com/anniversary-even
       }
 
       .rhcjc-anniversary-popup-btn:hover svg {
-        transform: translateX(4px);
+      transform: translateX(4px);
       }
 
       /* ==================== RESPONSIVE ==================== */
@@ -928,3 +939,9 @@ The design for the anniversary event used for the rhcjcnews.com/anniversary-even
         }
       }
 ```
+
+## Usage
+
+- **Homepage hero**: Use the **full hero banner and events grid** markup for the `/anniversary-events` page or a primary landing page.
+- **Compact banner**: Use the **compact homepage banner with CTA** at the top of the homepage or other high-traffic pages and point the link to `/anniversary-events`.
+- **Styles**: Include the CSS block in your global stylesheet or in a template `<style>` block that is loaded on every page where either banner variant appears.
