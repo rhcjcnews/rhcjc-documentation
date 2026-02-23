@@ -1,0 +1,199 @@
+---
+title: Mailchimp Image Optimizer
+description: A safe, Mailchimp-compatible image optimization script that resizes images, preserves originals, and generates WebP copies.
+---
+
+## Overview
+
+This script provides a **Mailchimp-safe image optimization workflow** for macOS using Zsh.
+
+It is designed specifically for **email newsletters**, where:
+
+- Image dimensions must be controlled
+- File size impacts load time
+- Modern formats like WebP are **not supported in email clients**
+
+To solve this, the script:
+
+- Keeps original images untouched
+- Writes optimized images to a separate folder
+- Resizes images to email-safe dimensions
+- Optimizes JPEG and PNG files
+- Generates WebP copies for website or archive use
+
+---
+
+## Why This Script Exists
+
+Lossless image compression alone is not enough for email platforms like Mailchimp. Large, un-resized source images can still be many megabytes and far wider than any email layout needs.
+
+### Common problems this script fixes:
+
+- Camera images that are 4000–6000px wide
+- Images that remain 5–8MB even after optimization
+- Accidental overwriting of original files
+- Uploading unsupported formats to email platforms
+
+### Key design decisions:
+
+- **Resize first** (most important for size reduction)
+- **Never overwrite originals**
+- **Email-safe output formats only**
+- **Optional WebP generation for non-email use**
+
+---
+
+## What the Script Does
+
+For each image in the target directory:
+
+- Keeps the **original image files untouched**
+- Writes all optimized files to an `optimized/` subfolder
+- Generates optional **WebP** copies for web or archive use
+
+### JPEG files
+
+- Resizes to a maximum of **1200px** (keeps aspect ratio)
+- Strips metadata
+- Applies controlled lossy compression (quality 80)
+- Generates a WebP version
+
+### PNG files
+
+- Resizes to a maximum of **1200px**
+- Applies lossless PNG optimization
+- Generates a WebP version
+
+### Output structure
+
+```text
+images/
+  hero.jpg          ← original
+  banner.png        ← original
+  optimized/
+    hero.jpg        ← Mailchimp-ready
+    hero.webp       ← website / archive use
+    banner.png
+    banner.webp
+```
+
+> **Important:** Only upload the **JPEG/PNG files from `optimized/`** to Mailchimp. WebP files are for web/archival use and are not supported by most email clients.
+
+---
+
+## Requirements
+
+- **Operating system**: macOS
+- **Shell**: Zsh (this function uses Zsh features like `setopt` and extended globs)
+- **Tools** (installed via Homebrew):
+
+```bash
+brew install imagemagick jpegoptim optipng webp
+```
+
+---
+
+## Installation
+
+1. Open your Zsh configuration file:
+
+   ```bash
+   nano ~/.zshrc
+   # or use any editor you prefer
+   ```
+
+2. Copy the script below into `~/.zshrc` (or into a separate `.zsh` file that you `source` from `~/.zshrc`).
+3. Save the file and reload your shell:
+
+   ```bash
+   source ~/.zshrc
+   # or open a new terminal window/tab
+   ```
+
+Once added, the `compress_images` command will be available in any new Zsh session.
+
+---
+
+## Usage
+
+From your terminal:
+
+```bash
+# Optimize all JPEG/PNG images in the current directory
+compress_images
+
+# Optimize images inside a specific folder
+compress_images /path/to/your/images
+```
+
+What happens when you run it:
+
+- A new `optimized/` folder is created inside the target directory (if it does not already exist).
+- All supported JPEG/PNG images are resized (max width 1200px) and optimized.
+- WebP copies are written next to the optimized JPEG/PNG files inside `optimized/`.
+
+You can safely run the command multiple times; it never overwrites your original images.
+
+---
+
+## Script
+
+```bash
+
+# Mailchimp-safe image optimizer (keeps originals)
+compress_images() {
+    setopt localoptions nullglob
+
+    local target_dir="${1:-.}"
+    local out_dir="$target_dir/optimized"
+    local max_size=1200
+
+    if [[ ! -d "$target_dir" ]]; then
+        echo "Error: '$target_dir' is not a directory."
+        return 1
+    fi
+
+    if ! command -v magick >/dev/null \
+       || ! command -v jpegoptim >/dev/null \
+       || ! command -v optipng >/dev/null \
+       || ! command -v cwebp >/dev/null; then
+        echo "Missing tools."
+        echo "Install with:"
+        echo "brew install imagemagick jpegoptim optipng webp"
+        return 1
+    fi
+
+    mkdir -p "$out_dir"
+
+    echo "Optimizing images for Mailchimp"
+    echo "Source: $(cd "$target_dir" && pwd)"
+    echo "Output: $out_dir"
+    echo "Max width: ${max_size}px"
+    echo "------------------------------------"
+
+    for img in "$target_dir"/*.(jpg|jpeg|JPG|JPEG); do
+        [[ -f "$img" ]] || continue
+        local base="$(basename "$img")"
+        local out_jpg="$out_dir/$base"
+        local out_webp="$out_dir/${base%.*}.webp"
+
+        magick "$img" -resize "${max_size}x${max_size}>" "$out_jpg"
+        jpegoptim --strip-all --max=80 "$out_jpg"
+        cwebp -q 75 "$out_jpg" -o "$out_webp" >/dev/null
+    done
+
+    for img in "$target_dir"/*.(png|PNG); do
+        [[ -f "$img" ]] || continue
+        local base="$(basename "$img")"
+        local out_png="$out_dir/$base"
+        local out_webp="$out_dir/${base%.*}.webp"
+
+        magick "$img" -resize "${max_size}x${max_size}>" "$out_png"
+        optipng -o2 "$out_png" >/dev/null
+        cwebp -q 75 "$out_png" -o "$out_webp" >/dev/null
+    done
+
+    echo "Done."
+    echo "Upload JPEG/PNG files from 'optimized/' to Mailchimp."
+}
+```
